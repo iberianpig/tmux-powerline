@@ -38,7 +38,6 @@ fi
 
 if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
 	TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS=(
-		"earthquake 3 0" \
 		"wan_ip 108 253 " \
 		"lan_ip 101 253" \
 		 # "mailcount 9 255" \

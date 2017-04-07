@@ -39,7 +39,6 @@ fi
 
 if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
 	TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS=(
-		"earthquake 3 0" \
 		"pwd 89 211" \
 		#"macos_notification_count 29 255" \
 		"mailcount 9 255" \
