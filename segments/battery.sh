@@ -3,8 +3,11 @@
 TMUX_POWERLINE_SEG_BATTERY_TYPE_DEFAULT="percentage"
 TMUX_POWERLINE_SEG_BATTERY_NUM_HEARTS_DEFAULT=5
 
-HEART_FULL="♥"
-HEART_EMPTY="♡"
+HEART_FULL="  "
+HEART_THREE_QUARTER="  "
+HEART_HALF="  "
+HEART_QUARTER="  "
+HEART_EMPTY="  "
 
 generate_segmentrc() {
 	read -d '' rccontents  << EORC
@@ -27,7 +30,7 @@ run_segment() {
 
 	case "$TMUX_POWERLINE_SEG_BATTERY_TYPE" in
 		"percentage")
-			output="${HEART_FULL} ${battery_status}%"
+			output=$(__persentage $battery_status)
 			;;
 		"cute")
 			output=$(__cutinate $battery_status)
@@ -122,19 +125,41 @@ __battery_osx() {
 		esac
 	}
 
+  __persentage() {
+    perc=$1
+    if [ "$perc" -lt 25 ]; then
+      echo -n "$HEART_EMPTY"
+    elif [ "$perc" -lt 50 ]; then
+      echo -n "$HEART_QUARTER"
+    elif [ "$perc" -lt 75 ]; then
+      echo -n "$HEART_HALF"
+    elif [ "$perc" -lt 99 ]; then
+      echo -n "$HEART_THREE_QUARTER"
+    else
+      echo -n "$HEART_FULL"
+    fi
+    echo -n "$perc%"
+  }
+
 	__cutinate() {
 		perc=$1
 		inc=$(( 100 / $TMUX_POWERLINE_SEG_BATTERY_NUM_HEARTS ))
 
 
-		for i in `seq $TMUX_POWERLINE_SEG_BATTERY_NUM_HEARTS`; do
-			if [ $perc -lt 99 ]; then
-				echo -n $HEART_EMPTY
+		while seq $TMUX_POWERLINE_SEG_BATTERY_NUM_HEARTS; do
+			if [ "$perc" -lt 25 ]; then
+				echo -n "$HEART_EMPTY"
+      elif [ "$perc" -lt 50 ]; then
+				echo -n "$HEART_QUARTER"
+      elif [ "$perc" -lt 75 ]; then
+				echo -n "$HEART_HALF"
+      elif [ "$perc" -lt 99 ]; then
+				echo -n "$HEART_THREE_QUARTER"
 			else
-				echo -n $HEART_FULL
+				echo -n "$HEART_FULL"
 			fi
 			echo -n " "
-			perc=$(( $perc + $inc ))
+			perc=$(( "$perc" + "$inc" ))
 		done
 	}
 
