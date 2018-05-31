@@ -27,7 +27,7 @@ if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
 		# "hostname 33 0" \
 		# "ifstat 30 255" \
 		# "ifstat_sys 30 255" \
-		"pwd 235 136" \
+		"pwd 235 136"  \
 		"vcs_branch 67 253" \
 		"vcs_compare 60 255" \
 		"vcs_staged 2 255" \
@@ -45,13 +45,13 @@ if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
 		 # "cpu 240 136" \
 		 # "load 237 167" \
 		 # "tmux_mem_cpu_load 234 136" \
-		"battery 11 239" \
+		# "battery 11 239" \
 		# "weather 29 253" \
 		# "rainbarf 0 0" \
 		# "xkb_layout 125 117" \
-    "date_day 235 136" \
-    "date 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}" \
-    "time 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}" \
-		#"utc_time 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}" \
+    # "date_day 235 136" \
+    # "date 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}" \
+    # "time 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}" \
+		# "utc_time 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}" \
 	)
 fi
